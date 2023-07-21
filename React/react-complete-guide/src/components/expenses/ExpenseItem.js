@@ -1,18 +1,19 @@
 import ExpenseDate from "./ExpenseDate";
 
 import "./ExpenseItem.css";
+import Card from "../ui/Card";
 
 // You can also use object destructuring to extract the properties from the props object.
 // function ExpenseItem({ title, amount, date })
 function ExpenseItem(props) {
     return (
-        <div className="expense-item">
+        <Card className="expense-item">
             <ExpenseDate date={props.expense.date} />
             <div className="expense-item__description">
                 <h2>{props.expense.title}</h2>
-                <div className="expense-item__price">{props.expense.amount}</div>
+                <div className="expense-item__price">${props.expense.amount}</div>
             </div>
-        </div>
+        </Card>
 
         // <div className="expense-item">
         //     <div>{props.date.toISOString()}</div>
