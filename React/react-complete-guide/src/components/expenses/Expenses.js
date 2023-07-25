@@ -1,5 +1,6 @@
-import { Grid, Card as NextCard } from '@nextui-org/react';
+import { Grid, Card as NextCard, Row } from "@nextui-org/react";
 
+import NewExpense from "../new_expense/NewExpense";
 import ExpenseItem from "./ExpenseItem";
 
 import "./Expenses.css";
@@ -9,9 +10,14 @@ function Expenses(props) {
     return (
         <Grid.Container gap={2} justify='center' direction='column'>
             <Grid xs={12} md={12} justify='center'>
-                <NextCard css={{ mw: "400px", $$cardColor: '$colors$gradient' }} variant='bordered'>
+                <NextCard css={{ mw: "800px", $$cardColor: '$colors$gradient' }} variant='bordered'>
+                    <NextCard.Header>
+                        <Row justify='center'>
+                            <h2 className='expenses__title'>Add new expense!</h2>
+                        </Row>
+                    </NextCard.Header>
                     <NextCard.Body>
-                        <h1>Let's get started!</h1>
+                        <NewExpense />
                     </NextCard.Body>
                 </NextCard>
             </Grid>
@@ -32,9 +38,6 @@ function Expenses(props) {
                     }
                 </Card>
             </Grid>
-
-
-
         </Grid.Container>
     )
 }

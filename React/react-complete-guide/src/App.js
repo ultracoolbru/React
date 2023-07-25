@@ -44,7 +44,7 @@ function App() {
 
   return (
     <NextUIProvider theme={theme}>
-      <Navbar isBordered variant="floating" lg>
+      <Navbar isBordered variant="floating">
         <Navbar.Brand>
           <Text b color="inherit" hideIn="xs">
             Edward Whitehead
