@@ -24,9 +24,20 @@ function Expenses(props) {
     }
 
     const [filteredYear, setFilterdYear] = useState('2021');
+    const [filteredInfoText, setFilteredInfoText] = useState('No expenses found.');
 
     const filterChangeHandler = (selectedYear) => {
         setFilterdYear(selectedYear);
+        
+        if (selectedYear === 'All') {
+            setFilteredInfoText('Displaying all years.');
+        }
+        else if (props.expenses.filter(expense => expense.date.getFullYear().toString() === selectedYear).length > 0) {
+            setFilteredInfoText('Expenses found for the selected year.');
+        }
+        else {
+            setFilteredInfoText('No expenses found for the selected year.');
+        }
     }
 
     return (
@@ -44,7 +55,7 @@ function Expenses(props) {
                 </NextCard>
             </Grid>
             <Grid xs={12} md={12} justify='center'>
-                <ExpensesFilter selected={filteredYear} onFilterChange={filterChangeHandler} expenses={props.expenses} />
+                <ExpensesFilter selected={filteredYear} onFilterChange={filterChangeHandler} expenses={props.expenses} filteredInfoText={filteredInfoText} />
             </Grid>
             <Grid xs={12} md={12}>
                 <Card className='expenses'>

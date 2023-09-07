@@ -3,6 +3,7 @@ import { Grid, Card as NextCard, Row, Dropdown } from "@nextui-org/react";
 import './ExpensesFilter.css';
 
 const ExpensesFilter = (props) => {
+  const distinctYears = [...new Set(props.expenses.map(expense => expense.date.getFullYear()))];
 
   const filterChangeHandler = (event) => {
     props.onFilterChange(event.target.value);
@@ -14,7 +15,7 @@ const ExpensesFilter = (props) => {
         <NextCard.Header>
           <Row justify='space-between'>
             <label>Filter by year</label>
-
+            <label>{props.filteredInfoText}</label>
             {/* <Dropdown>
               <Dropdown.Button>{props.selected}</Dropdown.Button>
               <Dropdown.Menu
@@ -30,8 +31,9 @@ const ExpensesFilter = (props) => {
             </Dropdown> */}
 
             <select onChange={filterChangeHandler} value={props.selected}>
+              <option value='All'>All</option>
               {
-                props.expenses.map((expense) => <option key={expense.id} value={expense.date.getFullYear()}>{expense.date.getFullYear()}</option>)
+                props.expenses.map((expense) => <option key={expense.id} value={distinctYears}>{distinctYears}</option>)
               }
             </select>
           </Row>
